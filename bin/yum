@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec yum install rpm/albuild-mozc-0.1.0-1.amzn2.x86_64.rpm

@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec docker rmi albuild-mozc:0.1.0

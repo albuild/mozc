@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec docker run -it --rm albuild-mozc:0.1.0 /bin/bash -l

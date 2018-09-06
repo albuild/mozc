@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec docker build . --force-rm -t albuild-mozc:0.1.0
