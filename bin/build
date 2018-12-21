@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-exec docker build . --force-rm -t albuild-mozc:0.1.0
+version=`cat version`
+exec docker build . --force-rm --build-arg version=$version -t albuild-mozc:$version

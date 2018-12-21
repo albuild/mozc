@@ -1,6 +1,6 @@
 Summary: Mozc for Amazon Linux 2
-Name: albuild-mozc
-Version: 0.1.0
+Name: albuild-ibus-mozc
+Version: 0.2.0
 Release: 1%{?dist}
 Group: Applications/Editors
 License: BSD-3-Clause
@@ -27,11 +27,12 @@ files=(
   gen_system_dictionary_data_main
   gen_usage_rewriter_dictionary_main
   ibus_mozc
+  LICENSE
   mozc_renderer
   mozc_server
   mozc_tool
-  protoc
   mozc.xml
+  protoc
 )
 rm -rf %{builddir}
 mkdir -p %{builddir}
@@ -39,9 +40,12 @@ for f in "${files[@]}"; do
   cp /app/mozc/src/out_linux/Release/$f %{builddir}
 done
 cp /app/mozc/src/data/images/unix/ime_product_icon_opensource-32.png %{builddir}
+mkdir -p %{buildroot}/usr/share/ibus/component
+ln -sf /opt/albuild-mozc/${version}/mozc.xml %{buildroot}/usr/share/ibus/component/mozc.xml
 
 %clean
 rm -rf %{buildroot}
 
 %files
 %{installdir}
+/usr/share/ibus/component/mozc.xml

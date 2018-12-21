@@ -1,8 +1,22 @@
-FROM amazonlinux:2.0.20180827
+FROM amazonlinux:2.0.20181114
 
-RUN yum update
+ARG version
+
+RUN yum update -y
 RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-RUN yum install -y git tar gzip xz which pkgconfig ibus-devel qt5-qtbase-devel gtk2-devel ninja-build gcc-c++
+RUN yum install -y \
+  gcc-c++ \
+  git \
+  gtk2-devel \
+  gzip \
+  ibus-devel \
+  ninja-build \
+  pkgconfig \
+  qt5-qtbase-devel \
+  rpm-build \
+  tar \
+  which \
+  xz
 RUN ln -s /usr/bin/ninja-build /usr/bin/ninja
 
 RUN mkdir /app
@@ -23,7 +37,7 @@ RUN git checkout -b build afb03ddfe72dde4cf2409863a3bfea160f7a66d8
 RUN git submodule update --init --recursive
 
 WORKDIR /app/mozc/src
-RUN python build_mozc.py gyp --target_platform=Linux --server_dir=/opt/albuild-mozc/0.1.0
+RUN python build_mozc.py gyp --target_platform=Linux --server_dir=/opt/albuild-mozc/$version
 RUN python build_mozc.py build -c Release \
   unix/ibus/ibus.gyp:ibus_mozc \
   unix/emacs/emacs.gyp:mozc_emacs_helper \
@@ -31,8 +45,7 @@ RUN python build_mozc.py build -c Release \
   gui/gui.gyp:mozc_tool \
   renderer/renderer.gyp:mozc_renderer
 ADD mozc.xml /app/mozc/src/out_linux/Release
-
-RUN yum install -y rpm-build
+RUN cp /app/mozc/LICENSE /app/mozc/src/out_linux/Release
 
 RUN mkdir -p /root/rpmbuild/{SOURCES,SPECS}
 WORKDIR /root/rpmbuild
