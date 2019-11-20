@@ -1,12 +1,13 @@
 Summary: Mozc for Amazon Linux 2
 Name: albuild-ibus-mozc
-Version: 0.2.0
-Release: 1%{?dist}
+Version: {{VERSION}}
+Release: 0%{?dist}
 Group: Applications/Editors
 License: BSD-3-Clause
 Source0: %{name}-%{version}.tar.gz
 URL: https://github.com/albuild/mozc
 BuildArch: x86_64
+Requires: qt5-qtbase
 
 %define installdir /opt/albuild-mozc/%{version}
 %define builddir %{buildroot}%{installdir}

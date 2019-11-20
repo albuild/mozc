@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 version=`cat version`
 mkdir -p rpm
-exec docker run --rm -v `pwd`/rpm:/rpm albuild-mozc:$version /bin/bash -l -c "cp -f /root/rpmbuild/RPMS/x86_64/albuild-mozc-$version-1.amzn2.x86_64.rpm /rpm"
+exec docker run --rm -v `pwd`/rpm:/rpm albuild-mozc:$version /bin/bash -l -c "cp -f /root/rpmbuild/RPMS/x86_64/albuild-ibus-mozc-$version-0.amzn2.x86_64.rpm /rpm"

@@ -2,7 +2,7 @@
   <version>0.0.0.0</version>
   <name>com.google.IBus.Mozc</name>
   <license>New BSD</license>
-  <exec>/opt/albuild-mozc/0.2.0/ibus_mozc --ibus</exec>
+  <exec>/opt/albuild-mozc/{{VERSION}}/ibus_mozc --ibus</exec>
   <textdomain>ibus-mozc</textdomain>
   <author>Google Inc.</author>
   <homepage>https://github.com/google/mozc</homepage>
@@ -13,8 +13,8 @@
   <rank>80</rank>
   <description>Mozc (Japanese Input Method)</description>
   <language>ja</language>
-  <icon>/opt/albuild-mozc/0.2.0/ime_product_icon_opensource-32.png</icon>
-  <setup>/opt/albuild-mozc/0.2.0/mozc_tool --mode=config_dialog</setup>
+  <icon>/opt/albuild-mozc/{{VERSION}}/ime_product_icon_opensource-32.png</icon>
+  <setup>/opt/albuild-mozc/{{VERSION}}/mozc_tool --mode=config_dialog</setup>
   <layout>jp</layout>
   <name>mozc-jp</name>
   <longname>Mozc</longname>

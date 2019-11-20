@@ -1,20 +1,14 @@
 # Changelog :)
 
-## Format
+### 0.2.1
 
-Based on [Keep a Changelog].
-
-## Versioning Policy
-
-[Semantic Versioning Caret]
-
-## Versions
+* Adds dependencies into RPM.
 
 ### 0.2.0
 
 #### Added
 
-* Automatically install ibus-mozc. 
+* Automatically installs ibus-mozc. 
 
 ### 0.1.0
 

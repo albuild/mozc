@@ -1,4 +1,4 @@
-FROM amazonlinux:2.0.20181114
+FROM amazonlinux:2.0.20191016.0
 
 ARG version
 
@@ -45,9 +45,11 @@ RUN python build_mozc.py build -c Release \
   gui/gui.gyp:mozc_tool \
   renderer/renderer.gyp:mozc_renderer
 ADD mozc.xml /app/mozc/src/out_linux/Release
+RUN sed -i "s,{{VERSION}},$version," /app/mozc/src/out_linux/Release/mozc.xml >/dev/null
 RUN cp /app/mozc/LICENSE /app/mozc/src/out_linux/Release
 
 RUN mkdir -p /root/rpmbuild/{SOURCES,SPECS}
 WORKDIR /root/rpmbuild
 ADD rpm.spec SPECS
+RUN sed -i "s,{{VERSION}},$version," SPECS/rpm.spec >/dev/null
 RUN rpmbuild -bb SPECS/rpm.spec
